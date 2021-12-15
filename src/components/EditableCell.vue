@@ -3,23 +3,28 @@
     <span tabindex="-1" role="button"
             v-if="!isEditing" 
             @click="switchEditingOn">
-        {{value}}
+        {{desc}}
     </span>
     <input tabindex="-1"
             ref="editingInput"
             v-if="isEditing" 
-            v-model="value"
+            v-model.lazy.trim="value"
             @blur="switchEditingOff">
 </div>
 </template>
 
 <script>
 export default {
-    name: 'EditableCell',
+    name: 'EditableCell',    
+    props: {
+        id: { required: true, type: String },
+        desc: { required: true, type: String },
+    },
     data() {
         return {
             isEditing: false,
-            value: 'Switch'
+            ide: this.id,
+            value: this.desc,
         };
     },
     methods: {
@@ -31,6 +36,7 @@ export default {
         switchEditingOff() {
             console.log('Editing mode is off');
             this.isEditing = false;
+            this.$emit('data-edited', this.ide, this.value);
         },
         focusEditingInput() {
             this.$nextTick(() => {
@@ -43,8 +49,4 @@ export default {
 </script>
 
 <style scoped>
-*:focus {
-    outline: dotted 2px black;
-    outline-offset: 2px;
-}
 </style>
