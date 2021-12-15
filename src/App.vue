@@ -3,63 +3,43 @@
     <tbody>
         <!-- TABLE HEADERS -->
         <tr>
-            <th tabindex="-1">
-                Name
-            </th>
-            <th tabindex="-1">
-                Description
-            </th>
-            <th tabindex="-1">
-                Price
-            </th>
-            <th tabindex="-1">
-                Amount
-            </th>
-            <th tabindex="-1">
-                Expiration
-            </th>
+            <th tabindex="-1">Name</th>
+            <th tabindex="-1">Description</th>
+            <th tabindex="-1">Price</th>
+            <th tabindex="-1">Amount</th>
+            <th tabindex="-1">Expiration</th>
         </tr>
 
-        <!-- TABLE CONTENTS -->
-        <tr v-for="row in Goods" :key="row.id">
-            <td tabindex="-1">
-                {{row.name}}
-            </td>
-            <td>                
-                <editable-cell
-                    :id="row.id"
-                    :desc="row.description"
-                    @data-edited="setNewDescription"></editable-cell>
-            </td>
-            <td tabindex="-1">
-                {{row.price}}
-            </td>
-            <td tabindex="-1">
-                {{row.amount}}
-            </td>
-            <td tabindex="-1">
-                {{row.expiration}}
-            </td>
-        </tr>
+        <!-- TABLE ROWS from Goods-->
+        <table-row v-for="item in Goods" 
+            :key        ="item.id"
+            :id         ="item.id"
+            :name       ="item.name"
+            :desc       ="item.description"
+            :price      ="item.price"
+            :amount     ="item.amount"
+            :expiration ="item.expiration"
+            @description-edited="setNewDescription"
+            ></table-row>
     </tbody>
 </table>
 </template>
 
 <script>
-import EditableCell from './components/EditableCell.vue';
+import TableRow from './components/TableRow.vue';
 import uniqueId from 'lodash.uniqueid';
 
 export default {
     name: 'App',
     components: {
-        EditableCell
+        TableRow
     },
     data() {
         return {
             Goods: [
-                { id: uniqueId('row-'), name: 'Apple', description: 'Red and tasty', price: '$2', amount: 2, expiration: 'in 5 days' },
-                { id: uniqueId('row-'), name: 'Milk', description: '3.5% fats', price: '$1.5', amount: 1, expiration: 'in 2 days' },
-                { id: uniqueId('row-'), name: 'Cake', description: 'With chocolate and cream', price: '$6', amount: 1, expiration: 'in 3 days' },
+                { id: uniqueId('row-'), name: 'Apple',  description: 'Red and tasty',            price: '$2',    amount: '2', expiration: 'in 5 days' },
+                { id: uniqueId('row-'), name: 'Milk',   description: '3.5% fats',                price: '$1.5',  amount: '1', expiration: 'in 2 days' },
+                { id: uniqueId('row-'), name: 'Cake',   description: 'With chocolate and cream', price: '$6',    amount: '1', expiration: 'in 3 days' },
             ]
         };
     },
