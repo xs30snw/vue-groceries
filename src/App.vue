@@ -1,26 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<EditableCell />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import EditableCell from './components/EditableCell.vue'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    name: 'App',
+    components: {
+        EditableCell
+    }
 }
 </script>
 
 <style>
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
 }
 </style>
