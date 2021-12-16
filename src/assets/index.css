@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+*:focus {
+    outline: dotted 2px black;
+    outline-offset: 2px;
+}
+
+html {
+    font-size: 18px;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+input,
+button {
+    font-size: 1rem;
+    padding: .4rem;
+}
+
+.center {
+    display: grid;
+    place-items: center;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+#app {
+    row-gap: 1rem;
+}

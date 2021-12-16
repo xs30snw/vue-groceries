@@ -1,37 +1,37 @@
 <template>
-<div id="modalAddItem">
+<div id="modalWrapper" class="center">
     
-    <form>
+    <form class="flexColumn">
 
         <h2>Add New Item</h2>
 
-        <div>
+        <div class="flexColumn formFields">
             <div>
-                <label>
+                <label class="flexColumn formFieldsItem">
                     <span>Name:</span>
                     <input type="text" v-model.lazy.trim="name">
                 </label>
             </div>
             <div>
-                <label>
+                <label class="flexColumn formFieldsItem">
                     <span>Description:</span>
                     <input type="text" v-model.lazy.trim="description">
                 </label>
             </div>
             <div>
-                <label>
+                <label class="flexColumn formFieldsItem">
                     <span>Price:</span>
                     <input type="text" v-model.lazy.trim="price">
                 </label>
             </div>
             <div>
-                <label>
+                <label class="flexColumn formFieldsItem">
                     <span>Amount:</span>
                     <input type="text" v-model.lazy.trim="amount">
                 </label>
             </div>
             <div>
-                <label>
+                <label class="flexColumn formFieldsItem">
                     <span>Expiration:</span>
                     <input type="text" v-model.lazy.trim="expiration">
                 </label>
@@ -82,21 +82,27 @@ export default {
 </script>
 
 <style scoped>
-#modalAddItem {
+#modalWrapper {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
 
-    display: grid;
-    place-items: center;
-
-    background-color: rgba(0, 0, 0, 0.568);
+    background-color: hsla(0, 0%, 0%, 0.568);
     z-index: 2;
 }
-
 form {
-    background-color: white;
+    background-color: hsl(0, 0%, 100%);
+    width: 376px;
+    padding: 1rem;
+
+    row-gap: 1.5rem;    
+}
+.formFields {
+    row-gap: 1rem;
+}
+.formFieldsItem {    
+    row-gap: .4rem;
 }
 </style>>

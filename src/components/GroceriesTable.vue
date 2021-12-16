@@ -68,5 +68,11 @@ export default {
 </script>
 
 <style>
-
+table, th, td {
+    border: 1px solid red;
+    border-collapse: collapse;
+}
+td:last-child {
+    border: 1px solid white;
+}
 </style>

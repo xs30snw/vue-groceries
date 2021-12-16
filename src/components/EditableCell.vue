@@ -65,10 +65,9 @@ span::after{
     right: -1.5rem;
     top: 0;
 }
-
 span,
 input {
-    width: 100%;
+    word-wrap: break-word;
 }
 span,
 input {
@@ -79,5 +78,4 @@ input {
     font-family: 'Times New Roman', Times, serif;
     border: none;
 }
-
 </style>

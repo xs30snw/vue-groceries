@@ -6,15 +6,19 @@
     ></modal-add-item>
 
 <h1>Groceries</h1>
-<button
-    @click="switchModalAddItemOn"
-    >Add item</button>
-<button
-    @click="addNewItem()"
-    >Add 1 blank</button>
-<button
-    @click="fetchDataAndReplace('http://localhost:3000/items')"
-    >Look in the Fridge</button>
+
+<section class="buttonGroup">
+    <button
+        @click="switchModalAddItemOn"
+        >Add item</button>
+    <button
+        @click="addNewItem()"
+        >Add 1 blank</button>
+    <button id="buttonFetch"
+        @click="fetchDataAndReplace('http://localhost:3000/items')"
+        >Look in the Fridge</button>
+</section>
+
 <groceries-table
     :goodsLocal="Goods"
     @table-edited="updateData"
@@ -41,6 +45,9 @@ export default {
                 // { id: uniqueId('row-'), name: 'Cake',   description: 'With chocolate and cream', price: '$6',    amount: '1', expiration: 'in 3 days' },
             ]
         }
+    },
+    created() {
+        this.fetchDataAndReplace('http://localhost:3000/items')
     },
     methods: {
         fetchDataAndReplace(url) {
@@ -83,26 +90,12 @@ export default {
 }
 </script>
 
-<style>
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-*:focus {
-    outline: dotted 2px black;
-    outline-offset: 2px;
-}
-html {
-    font-size: 18px;
-}
-body {
-    min-height: 100vh;
+<style scoped>
+.buttonGroup {
     display: grid;
-    place-items: center;
+    grid-template-columns: auto auto 1fr auto;
 }
-table, th, td {
-    border: 1px solid red;
-    border-collapse: collapse;
+#buttonFetch {
+    grid-column: 4;
 }
 </style>
