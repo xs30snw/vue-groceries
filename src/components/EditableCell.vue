@@ -1,5 +1,5 @@
 <template>
-<div class="editable-text">
+<div class="editableCell">
     <span tabindex  ="-1" 
             role    ="button"
             v-if    ="!isEditing" 
@@ -18,13 +18,11 @@
 export default {
     name: 'EditableCell',    
     props: {
-        id:   { required: true, type: String },
         desc: { required: true, type: String },
     },
     data() {
         return {
             isEditing: false,
-            ide: this.id,
             value: this.desc,
         };
     },
@@ -35,7 +33,7 @@ export default {
         },
         switchEditingOff() {
             this.isEditing = false;
-            this.$emit('description-edited', this.ide, this.value);
+            this.$emit('description-edited', this.value);
         },
         focusEditingInput() {
             this.$nextTick(() => {
@@ -48,4 +46,38 @@ export default {
 </script>
 
 <style scoped>
+.editableCell {
+    display: flex;
+}
+span {
+    position: relative;
+}
+span::after{
+    background-image: url('../assets/edit-regular.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    content: ' ';
+    width: 1rem;
+    height: 1rem;
+    opacity: .4;
+    position: absolute;
+    right: -1.5rem;
+    top: 0;
+}
+
+span,
+input {
+    width: 100%;
+}
+span,
+input {
+    margin-right: 1.5rem;
+}
+input {
+    font-size: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+    border: none;
+}
+
 </style>

@@ -20,6 +20,7 @@
             :amount     ="item.amount"
             :expiration ="item.expiration"
             @description-edited="setNewDescription"
+            @delete-item="deleteItem"
             ></table-row>
     </tbody>
 </table>
@@ -47,6 +48,10 @@ export default {
         setNewDescription(rowId, newDescription) {
             var row = this.Goods.find(item=>item.id===rowId);
             if (row) row.description = newDescription;
+        },
+        deleteItem(rowId) {
+            var index = this.Goods.findIndex(item=>item.id===rowId);
+            this.Goods.splice(index, 1);
         }
     }
 }
@@ -69,5 +74,9 @@ html {
     min-height: 100vh;
     display: grid;
     place-items: center;
+}
+table, th, td {
+    border: 1px solid red;
+    border-collapse: collapse;
 }
 </style>
