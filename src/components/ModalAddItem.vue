@@ -39,10 +39,10 @@
         </div>
 
         <div>
-            <button @click="emitAddNewItem">
+            <button @click.prevent="emitAddNewItem">
                 Add
             </button>
-            <button @click="emitCloseModal">
+            <button @click.prevent="emitCloseModal">
                 Cancel
             </button>
         </div>

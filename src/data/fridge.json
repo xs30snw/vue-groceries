@@ -1,0 +1,28 @@
+{
+    "items":[
+        { 
+            "id": "1",
+            "name": "Apple", 
+            "description": "Red and tasty", 
+            "price": "$2", 
+            "amount": "2", 
+            "expiration": "in 5 days" 
+        },
+        { 
+            "id": "2", 
+            "name": "Milk", 
+            "description": "3.5% fats", 
+            "price": "$1.5",  
+            "amount": "1", 
+            "expiration": "in 2 days" 
+        },
+        { 
+            "id": "3", 
+            "name": "Cake", 
+            "description": "With chocolate and cream", 
+            "price": "$6", 
+            "amount": "1", 
+            "expiration": "in 3 days" 
+        }
+    ]
+}
