@@ -1,6 +1,17 @@
 <template>
+<modal-add-item
+    v-show="isModalAddItemOpen"
+    @close-modal="switchModalAddItemOff"
+    @add-new-item="addNewItem"
+    ></modal-add-item>
+
 <h1>Groceries</h1>
-<button>Add item</button>
+<button
+    @click="switchModalAddItemOn"
+    >Add item</button>
+<button
+    @click="addNewItem()"
+    >Add 1 blank</button>
 <groceries-table 
     :goodsLocal="Goods"
     @table-edited="updateData"
@@ -9,15 +20,18 @@
 
 <script>
 import GroceriesTable from './components/GroceriesTable.vue';
+import ModalAddItem from './components/ModalAddItem.vue';
 import uniqueId from 'lodash.uniqueid';
 
 export default {
     name: 'App',
     components: {
-        GroceriesTable
+        GroceriesTable,
+        ModalAddItem
     },
     data() {
         return {
+            isModalAddItemOpen: false,
             Goods: [
                 { id: uniqueId('row-'), name: 'Apple',  description: 'Red and tasty',            price: '$2',    amount: '2', expiration: 'in 5 days' },
                 { id: uniqueId('row-'), name: 'Milk',   description: '3.5% fats',                price: '$1.5',  amount: '1', expiration: 'in 2 days' },
@@ -28,6 +42,24 @@ export default {
     methods: {
         updateData(updatedGoods) {
             this.Goods = updatedGoods;
+        },
+        switchModalAddItemOn() {
+            this.isModalAddItemOpen = true;
+        },
+        switchModalAddItemOff() {
+            this.isModalAddItemOpen = false;
+        },
+        addNewItem(newName='---', newDesc='---', newPrice='---', newAmount='---', newExpire='---') {
+            this.Goods.push(
+                {
+                    id: uniqueId('row-'),
+                    name: newName,
+                    description: newDesc,
+                    price: newPrice,
+                    amount: newAmount,
+                    expiration: newExpire
+                }
+            )
         }
     }
 }
