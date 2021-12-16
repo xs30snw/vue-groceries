@@ -1,39 +1,20 @@
 <template>
-<table role="grid">
-    <tbody>
-        <!-- TABLE HEADERS -->
-        <tr>
-            <th tabindex="-1">Name</th>
-            <th tabindex="-1">Description</th>
-            <th tabindex="-1">Price</th>
-            <th tabindex="-1">Amount</th>
-            <th tabindex="-1">Expiration</th>
-        </tr>
-
-        <!-- TABLE ROWS from Goods-->
-        <table-row v-for="item in Goods" 
-            :key        ="item.id"
-            :id         ="item.id"
-            :name       ="item.name"
-            :desc       ="item.description"
-            :price      ="item.price"
-            :amount     ="item.amount"
-            :expiration ="item.expiration"
-            @description-edited="setNewDescription"
-            @delete-item="deleteItem"
-            ></table-row>
-    </tbody>
-</table>
+<h1>Groceries</h1>
+<button>Add item</button>
+<groceries-table 
+    :goodsLocal="Goods"
+    @table-edited="updateData"
+    ></groceries-table>
 </template>
 
 <script>
-import TableRow from './components/TableRow.vue';
+import GroceriesTable from './components/GroceriesTable.vue';
 import uniqueId from 'lodash.uniqueid';
 
 export default {
     name: 'App',
     components: {
-        TableRow
+        GroceriesTable
     },
     data() {
         return {
@@ -42,16 +23,11 @@ export default {
                 { id: uniqueId('row-'), name: 'Milk',   description: '3.5% fats',                price: '$1.5',  amount: '1', expiration: 'in 2 days' },
                 { id: uniqueId('row-'), name: 'Cake',   description: 'With chocolate and cream', price: '$6',    amount: '1', expiration: 'in 3 days' },
             ]
-        };
+        }
     },
     methods: {
-        setNewDescription(rowId, newDescription) {
-            var row = this.Goods.find(item=>item.id===rowId);
-            if (row) row.description = newDescription;
-        },
-        deleteItem(rowId) {
-            var index = this.Goods.findIndex(item=>item.id===rowId);
-            this.Goods.splice(index, 1);
+        updateData(updatedGoods) {
+            this.Goods = updatedGoods;
         }
     }
 }
@@ -70,7 +46,7 @@ export default {
 html {
     font-size: 18px;
 }
-#app {
+body {
     min-height: 100vh;
     display: grid;
     place-items: center;
