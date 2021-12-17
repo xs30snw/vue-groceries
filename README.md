@@ -1,24 +1,9 @@
 # vue-groceries
 
-## Project setup
-```
-npm install
-```
+## Screenshot1
 
-### Compiles and hot-reloads for development
+![](./screenshot1.png)
 ```
-npm run serve
-```
+## Screenshot2
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![](./screenshot2.png)
